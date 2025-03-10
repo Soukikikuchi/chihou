@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地方創生イベント企画 | 未来をつくる地域活性化</title>
+    <style>
+        /* 基本スタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #ff6b00;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b00;
+        }
+        
+        .header-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .header-nav li {
+            margin-left: 30px;
+        }
+        
+        .header-nav a {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .header-nav a:hover {
+            color: #ff6b00;
+        }
+        
+        /* メインビジュアル */
+        .main-visual {
+            padding-top: 80px;
+            background: linear-gradient(135deg, #ffead9, #ffe6d1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-visual::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .main-visual-inner {
+            padding: 80px 0 130px;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff6b00;
+            line-height: 1.3;
+        }
+        
+        .main-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background-color: #ff6b00;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        /* スワイプセクション */
+        .swipe-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            color: #ff6b00;
+        }
+        
+        .swipe-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .swipe-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .swipe-container::-webkit-scrollbar-thumb {
+            background-color: #ffbd8d;
+            border-radius: 3px;
+        }
+        
+        .swipe-container::-webkit-scrollbar-track {
+            background-color: #f2f2f2;
+        }
+        
+        .swipe-card {
+            display: inline-block;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-right: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            white-space: normal;
+            vertical-align: top;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+        }
+        
+        .swipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #ffead9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #ff6b00;
+            font-size: 28px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .card-text {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* サービス特徴 */
+        .features {
+            background-color: #ffead9;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .features::before,
+        .features::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            left: 0;
+        }
+        
+        .features::before {
+            top: -50px;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .features::after {
+            bottom: -50px;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .features-inner {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .feature-item {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            flex: 1 1 300px;
+            max-width: 350px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #fff6f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #ff6b00;
+            font-size: 32px;
+        }
+        
+        .feature-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .feature-text {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        /* 事例紹介 */
+        .case-studies {
+            padding: 130px 0 80px;
+        }
+        
+        .case-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .case-item {
+            flex: 1 1 350px;
+            max-width: 370px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .case-image {
+            height: 200px;
+            background-color: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .case-item:hover .case-image img {
+            transform: scale(1.05);
+        }
+        
+        .case-content {
+            padding: 25px;
+            background-color: #fff;
+        }
+        
+        .case-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #ffead9;
+            color: #ff6b00;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .case-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .case-text {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .case-more {
+            display: inline-flex;
+            align-items: center;
+            color: #ff6b00;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .case-more::after {
+            content: "→";
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .case-more:hover::after {
+            margin-left: 8px;
+        }
+        
+        /* お問い合わせ */
+        .contact {
+            background: linear-gradient(135deg, #ffead9, #ffe6d1);
+            padding: 130px 0 80px;
+            position: relative;
+        }
+        
+        .contact::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            border-radius: 0 0 50% 50%;
+        }
+        
+        .contact-inner {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-box {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff6b00;
+        }
+        
+        .contact-text {
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background-color: #ff6b00;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        /* フッター */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-info {
+            flex: 1 1 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .footer-text {
+            color: #ccc;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .footer-nav {
+            flex: 1 1 200px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-nav-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-nav-list {
+            list-style: none;
+        }
+        
+        .footer-nav-list li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-nav-list a {
+            color: #ccc;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-nav-list a:hover {
+            color: #ff6b00;
+        }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-copyright {
+            color: #999;
+            font-size: 13px;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 32px;
+            }
+            
+            .main-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .header-nav {
+                display: none;
+            }
+            
+            .feature-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-box {
+                padding: 30px 20px;
+            }
+            
+            .contact-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">イベントクリエイト</div>
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="#service">サービス</a></li>
+                        <li><a href="#features">特徴</a></li>
+                        <li><a href="#cases">事例</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section class="main-visual">
+        <div class="container">
+            <div class="main-visual-inner">
+                <h1 class="main-title">地域の魅力を活かした<br>体験型イベントで<br>地方創生を実現</h1>
+                <p class="main-subtitle">企業と地域をつなぐ、オーダーメイドの地方創生イベントをプロデュース</p>
+                <a href="#contact" class="cta-button">無料相談はこちら</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス紹介（スワイプ型） -->
+    <section class="swipe-section" id="service">
+        <div class="container">
+            <h2 class="section-title">サービス内容</h2>
+            <div class="swipe-container">
+                <div class="swipe-card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">企業研修</h3>
+                    <p class="card-text">地域資源を活用した体験型の企業研修プログラムを企画・運営します。チームビルディングや新たな視点の獲得に効果的です。</p>
+                </div>
+                <div class="swipe-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">SDGs推進企画</h3>
+                    <p class="card-text">地域課題解決とSDGs達成を両立する企画を提案。企業のCSR活動として、社会貢献と企業価値向上を実現します。</p>
+                </div>
+                <div class="swipe-card">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title">地域連携イベント</h3>
+                    <p class="card-text">企業のブランディングと地域の魅力発信を掛け合わせた、独自性の高いイベントを企画・実施します。</p>
+                </div>
+                <div class="swipe-card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">マーケティング調査</h3>
+                    <p class="card-text">地方でのフィールドワークを通じて、新たな市場調査やユーザーインサイトの獲得をサポートします。</p>
+                </div>
+                <div class="swipe-card">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title">ワークショップ</h3>
+                    <p class="card-text">地域の生産者や職人と連携した体験型ワークショップを企画。商品開発のヒントや異業種交流の場を提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス特徴 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-inner">
+                <h2 class="section-title">選ばれる理由</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📍</div>
+                        <h3 class="feature-title">全国47都道府県対応</h3>
+                        <p class="feature-text">全国各地の自治体や事業者とのネットワークを活かし、地域特性に合わせた企画をご提案します。都市部から離島まで、ご希望のエリアでイベントを実施可能です。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">ワンストップ対応</h3>
+                        <p class="feature-text">企画立案から現地調整、当日の運営、事後レポートまで一貫してサポート。煩雑な調整業務をすべてお任せいただけます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">成果にコミット</h3>
+                        <p class="feature-text">参加者満足度95%以上を実現。企業の目的とKPIに合わせた企画設計と効果測定で、確かな成果をお約束します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事例紹介 -->
+    <section class="case-studies" id="cases">
+        <div class="container">
+            <h2 class="section-title">実績紹介</h2>
+            <div class="case-list">
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="/api/placeholder/400/320" alt="企業研修の様子">
+                    </div>
+                    <div class="case-content">
+                        <span class="case-tag">企業研修</span>
+                        <h3 class="case-title">IT企業の新入社員研修</h3>
+                        <p class="case-text">過疎地域の課題解決をテーマにしたフィールドワーク型研修。地域住民との対話を通じて共創力を育成しました。</p>
+                        <a href="#" class="case-more">詳細を見る</a>
+                    </div>
+                </div>
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="/api/placeholder/400/320" alt="SDGs推進企画の様子">
+                    </div>
+                    <div class="case-content">
+                        <span class="case-tag">SDGs推進</span>
+                        <h3 class="case-title">食品メーカーの森林保全活動</h3>
+                        <p class="case-text">社員とその家族が参加する植樹イベントを企画。地域の林業関係者との交流も含めた2日間のプログラムを実施しました。</p>
+                        <a href="#" class="case-more">詳細を見る</a>
+                    </div>
+                </div>
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="/api/placeholder/400/320" alt="地域連携イベントの様子">
+                    </div>
+                    <div class="case-content">
+                        <span class="case-tag">地域連携</span>
+                        <h3 class="case-title">アパレルブランドの産地イベント</h3>
+                        <p class="case-text">伝統工芸の技術を活かした商品開発のためのワークショップと展示会を開催。メディア20社以上に取り上げられました。</p>
+                        <a href="#" class="case-more">詳細を見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-box">
+                    <h2 class="contact-title">お気軽にご相談ください</h2>
+                    <p class="contact-text">地方創生に関するイベント企画から運営まで、<br>あなたの企業のニーズに合わせたプランをご提案します。</p>
+                    <a href="#" class="contact-button">無料相談を申し込む</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <div class="footer-logo">イベントクリエイト</div>
+                    <p class="footer-text">企業と地域をつなぐ体験型イベントで、日本の地方創生を推進します。オーダーメイドのイベント企画・運営を承ります。</p>
+                </div>
+                <div class="footer-nav">
+                    <h3 class="footer-nav-title">サービス</h3>
+                    <ul class="footer-nav-list">
+                        <li><a href="#">企業研修</a></li>
+                        <li><a href="#">SDGs推進企画</a></li>
+                        <li><a href="#">地域連携イベント</a></li>
+                        <li><a href="#">マーケティング調査</a></li>
+                        <li><a href="#">ワークショップ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav">
+                    <h3 class="footer-nav-title">会社情報</h3>
+                    <ul class="footer-nav-list">
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">実績</a></li>
+                        <li><a href="#">ブログ</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 イベントクリエイト All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スワイプセクションのスクロール位置を記憶するための変数
+        let scrollPos = 0;
+        const swipeContainer = document.querySelector('.swipe-container');
+        
+        // スクロール位置を記憶
+        swipeContainer.addEventListener('scroll', function() {
+            scrollPos = swipeContainer.scrollLeft;
+        });
+        
+        // ヘッダーのスムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
